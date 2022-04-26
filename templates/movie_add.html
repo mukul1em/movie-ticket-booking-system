@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Admin Login</title>
+  </head>
+  <body>
+    <h1>Admin Login</h1>
+    <div class="container-sm ">
+        <div class="sm">
+            <form action="{{ url_for('movieadd') }}" method="post">
+                <!-- Email input -->
+
+                <div class="col-sm-2">
+                    <label class="form-label" for="form2Example1">title</label>
+                    <input type="title" name = 'title' id="form2Example1" class="form-control" />
+                  
+                </div>
+              
+                <!-- Password input -->
+                <div class="col-sm-2">
+                    <label class="form-label" for="form2Example2">director name</label>
+                  <input type="director" id="form2Example2" name = 'director' class="form-control" />
+                  
+                </div>
+
+                <div class="col-sm-2">
+                    <label class="form-label" for="form2Example2">actor1 name</label>
+                  <input type="actor1" id="form2Example2" name = 'actor1' class="form-control" />
+                  
+                </div>
+
+                <div class="col-sm-2">
+                    <label class="form-label" for="form2Example2">actor2 name</label>
+                  <input type="actor2" id="form2Example2" name = 'actor2' class="form-control" />
+                  
+                </div>
+
+                <div class="col-sm-2">
+                    <label class="form-label" for="form2Example2">actor3 name</label>
+                  <input type="actor3" id="form2Example2" name = 'actor3' class="form-control" />
+                  
+                </div>
+
+                <div class="col-sm-2">
+                    <label class="form-label" for="form2Example2">duration</label>
+                  <input type="duration" id="form2Example2" name = 'duration' class="form-control" />
+                  
+                </div>
+
+                <div class="col-sm-2">
+                    <label class="form-label" for="form2Example2">language</label>
+                  <input type="language" id="form2Example2" name = 'language' class="form-control" />
+                  
+                </div>
+
+                <div class="col-sm-2">
+                    <label class="form-label" for="form2Example2">country</label>
+                  <input type="country" id="form2Example2" name = 'country' class="form-control" />
+                  
+                </div>
+
+                <div class="col-sm-2">
+                    <label class="form-label" for="form2Example2">genre</label>
+                  <input type="genre" id="form2Example2" name = 'genre' class="form-control" />
+                  
+                </div>
+                <br>
+              
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4">Add movie</button>
+                </div>
+              </form>
+        </div>
+    </div>
+    
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
