@@ -21,16 +21,20 @@
 
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               <form action="{{url_for('theatres')}}" method="post">
-                <input type="checkbox" class="btn-check" name='options' id="btn-check-outlined" autocomplete="off">
-                <label class="btn btn-outline-primary" for="btn-check-outlined">Single toggle</label><br>
-              <button type="button" name='T1' class="btn btn-outline-primary btn-sm">6:50 PM</button>
-              <button type="button" class="btn btn-outline-primary btn-sm">6:50 PM</button>
-              <button type="button" class="btn btn-outline-primary btn-sm">6:50 PM</button>
+                <input type="checkbox" class="btn-check" name='options' id="btn-check-outlined" autocomplete="off" value="{{time}}">
+                <label class="btn btn-outline-primary btn-sm" for="btn-check-outlined">{{time}}</label>
+                <input type="checkbox" class="btn-check" name='options' id="btn-check-outlined" autocomplete="off" value="{{time}}">
+                <label class="btn btn-outline-primary btn-sm" for="btn-check-outlined">{{time}}</label>
+                <input type="checkbox" class="btn-check" name='options' id="btn-check-outlined" autocomplete="off" value="{{time}}">
+                <label class="btn btn-outline-primary btn-sm" for="btn-check-outlined">{{time}}</label>
               <br>
               <br>
-              <button type="button" class="btn btn-outline-primary btn-sm">6:50 PM</button>
-              <button type="button" class="btn btn-outline-primary btn-sm">6:50 PM</button>
-              <button type="button" class="btn btn-outline-primary btn-sm">6:50 PM</button>
+              <input type="checkbox" class="btn-check" name='options' id="btn-check-outlined" autocomplete="off" value="{{time}}">
+                <label class="btn btn-outline-primary btn-sm" for="btn-check-outlined">{{time}}</label>
+                <input type="checkbox" class="btn-check" name='options' id="btn-check-outlined" autocomplete="off" value="{{time}}">
+                <label class="btn btn-outline-primary btn-sm" for="btn-check-outlined">{{time}}</label>
+                <input type="checkbox" class="btn-check" name='options' id="btn-check-outlined" autocomplete="off" value="{{time}}">
+                <label class="btn btn-outline-primary btn-sm" for="btn-check-outlined">{{time}}</label>
               <br>
               <br>
               <button type="submit" class="btn btn-primary btn-block mb-4">book</button>
@@ -38,28 +42,40 @@
             </div>
           </div>
           <br>
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">THEATRE 2</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
-              <button type="button" class="btn btn-outline-primary btn-sm">6:50 PM</button>
-              <button type="button" class="btn btn-outline-primary btn-sm">6:50 PM</button>
-              <button type="button" class="btn btn-outline-primary btn-sm">6:50 PM</button>
-              <br>
-              <br>
-              <button type="button" class="btn btn-outline-primary btn-sm">6:50 PM</button>
-              <button type="button" class="btn btn-outline-primary btn-sm">6:50 PM</button>
-              <button type="button" class="btn btn-outline-primary btn-sm">6:50 PM</button>
-              <br>
-              <br>
-              <button type="submit" class="btn btn-primary btn-block mb-4">book</button>
-            </div>
-          </div>
 
     </div>
-    
+
+    <div class="container-sm">
+      <div class="card" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">THEATRE 1</h5>
+
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <form name='form2' action="{{url_for('theatres')}}" method="post">
+              <input type="checkbox" class="btn-check" name='options' id="btn-check-outlined" autocomplete="off" value="{{time}}">
+              <label class="btn btn-outline-primary btn-sm" for="btn-check-outlined">{{time}}</label>
+              <input type="checkbox" class="btn-check" name='options' id="btn-check-outlined" autocomplete="off" value="{{time}}">
+              <label class="btn btn-outline-primary btn-sm" for="btn-check-outlined">{{time}}</label>
+              <input type="checkbox" class="btn-check" name='options' id="btn-check-outlined" autocomplete="off" value="{{time}}">
+              <label class="btn btn-outline-primary btn-sm" for="btn-check-outlined">{{time}}</label>
+            <br>
+            <br>
+            <input type="checkbox" class="btn-check" name='options' id="btn-check-outlined" autocomplete="off" value="{{time}}">
+              <label class="btn btn-outline-primary btn-sm" for="btn-check-outlined">{{time}}</label>
+              <input type="checkbox" class="btn-check" name='options' id="btn-check-outlined" autocomplete="off" value="{{time}}">
+              <label class="btn btn-outline-primary btn-sm" for="btn-check-outlined">{{time}}</label>
+              <input type="checkbox" class="btn-check" name='options' id="btn-check-outlined" autocomplete="off" value="{{time}}">
+              <label class="btn btn-outline-primary btn-sm" for="btn-check-outlined">{{time}}</label>
+            <br>
+            <br>
+            <button type="submit" class="btn btn-primary btn-block mb-4">book</button>
+          </form>
+          </div>
+        </div>
+        <br>
+
+    </div>
     
 
     <!-- Optional JavaScript; choose one of the two! -->

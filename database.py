@@ -93,11 +93,11 @@ class Movie(db.Model):
     actor2 = db.Column(db.String(64),index=True)
     actor3 = db.Column(db.String(64),index=True)
     director = db.Column(db.String(64),index=True)
-    language  = db.Column(db.String(64), index=True)
-    country  = db.Column(db.String(64), index=True)
+    month = db.Column(db.Integer, index=True)
+    year = db.Column(db.Integer, index=True)
     genre = db.Column(db.String(64),index=True)
     description = db.Column(db.String(1000), index=True, nullable=True)
-    TimeDuraton = db.Column(db.String(10))
+    TimeDuraton = db.Column(db.Float(10))
     shows = db.relationship('show', backref='movie', lazy=True)
 
 

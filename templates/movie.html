@@ -12,14 +12,44 @@
   </head>
   <body>
     <h1>Home</h1>
-    {% for i in range(3)%}
+    <div class="container">
+
+    <form action="{{url_for('movieselect')}}" method="post">
+      <div class="input-group flex-nowrap">
+        <span class="input-group-text" name='movie' id="addon-wrapping">Movie Name</span>
+        <input type="text" name='movie' class="form-control" aria-describedby="addon-wrapping">
+      </div>
+      <br>
+      <select class="form-select form-select-lg mb-3" name = 'genre' aria-label=".form-select-lg example">
+        <option selected>select genre</option>
+        <option value="Action">Action</option>
+        <option value="Comedy">Comedy</option>
+        <option value="Science Fiction">Science Fiction</option>
+        <option value="Horror">Horror</option>
+        <option value="Romance">Romance</option>
+      </select>
+      <button type='submit' class="btn btn-primary">Search</button>
+
+    </form>
+    <br>
+
+    
+    {% for i in range(2)%}
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col">
           <div class="card h-100">
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{titles[i]}}</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text">{{overview[i]}}</p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">director: {{directors[i]}}</li>
+                <li class="list-group-item">actors: {{actors1[i]}}, {{actors2[i]}}, {{actors3[i]}} </li>
+                <li class="list-group-item">genre: {{genres[i]}}</li>
+                <li class="list-group-item">releasedates: {{releasedates[i]}}</li>
+                <li class="list-group-item">duration: {{duration[i]}}</li>
+
+              </ul>
             </div>
             <div class="card-footer">
               <small class="text-muted">Last updated 3 mins ago</small>
@@ -32,7 +62,15 @@
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{titles[i+1]}}</h5>
-              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+              <p class="card-text">{{overview[i+1]}}</p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">director: {{directors[i+1]}}</li>
+                <li class="list-group-item">actors: {{actors1[i+1]}}, {{actors2[i+1]}}, {{actors3[i+1]}} </li>
+                <li class="list-group-item">genre: {{genres[i+1]}}</li>
+                <li class="list-group-item">releasedates: {{releasedates[i+1]}}</li>
+                <li class="list-group-item">duration: {{duration[i+1]}}</li>
+
+              </ul>
             </div>
             <div class="card-footer">
               <small class="text-muted">Last updated 3 mins ago</small>
@@ -45,7 +83,14 @@
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{titles[i+2]}}</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+              <p class="card-text">{{overview[i+2]}}</p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">director: {{directors[i+2]}}</li>
+                <li class="list-group-item">actors: {{actors1[i+2]}}, {{actors2[i+2]}}, {{actors3[i+2]}} </li>
+                <li class="list-group-item">genre: {{genres[i+2]}}</li>
+                <li class="list-group-item">releasedates: {{releasedates[i+2]}}</li>
+                <li class="list-group-item">duration: {{duration[i+2]}}</li>
+              </ul>
             </div>
             <div class="card-footer">
               <small class="text-muted">Last updated 3 mins ago</small>
@@ -55,6 +100,7 @@
         </div>
       </div>
     {%endfor%}
+  </div>
     
     
 

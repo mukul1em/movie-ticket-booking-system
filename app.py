@@ -67,23 +67,81 @@ def home2():
 
 @app.route('/moviebook',methods=['GET','POST'] )
 def movieselect():
-    movie = Movie.query.limit(9)
-    titles = []
-    for m in movie:
-        titles.append(m.title)
-    print(titles)
-    return render_template('movie.html',titles = titles)
+    if request.method=='POST':
+        if request.form['movie'] :
+            tag = request.form['movie']
+            print(tag)
+            search = "%{}%".format(tag)
+            movie = Movie.query.filter(Movie.month > 5).filter(Movie.month < 9).filter(Movie.year==2022).filter(Movie.title.like(search)).limit(4)
+        elif request.form['movie'] != '':
+            tag = request.form['movie']
+            search = "%{}%".format(tag)
+            print(tag)5
+            movie = Movie.query.filter(Movie.month > 5).filter(Movie.month < 9).filter(Movie.year==2022).filter(Movie.genre.like(search)).limit(4)
+        else:
+            movie = Movie.query.filter(Movie.month > 5).filter(Movie.month < 9).filter(Movie.year==2022).limit(4)
+        titles = []
+        duration = []
+        releasedates = []
+        actors1 = []
+        actors2 = []
+        actors3 = []
+        directors = []
+        overview = []
+        genres = []
+        for m in movie:
+            titles.append(m.title)
+            duration.append(m.TimeDuraton)
+            releasedates.append("-".join([str(m.month), str(m.year)]))
+            actors1.append(m.actor1)
+            actors2.append(m.actor2)
+            actors3.append(m.actor3)
+            directors.append(m.director)
+            overview.append(m.description)
+            genres.append(m.genre)
+        
+        return render_template('movie.html',titles = titles,duration=duration,
+                            releasedates=releasedates,actors1=actors1, 
+                                actors2=actors2, actors3=actors3,
+                                directors=directors, overview=overview,genres=genres, r= len(titles))
+  
+    if request.method=="GET":
+        movie = Movie.query.filter(Movie.month > 5).filter(Movie.month < 9).filter(Movie.year==2022).limit(4)
+        titles = []
+        duration = []
+        releasedates = []
+        actors1 = []
+        actors2 = []
+        actors3 = []
+        directors = []
+        overview = []
+        genres = []
+        for m in movie:
+            titles.append(m.title)
+            duration.append(m.TimeDuraton)
+            releasedates.append("-".join([str(m.month), str(m.year)]))
+            actors1.append(m.actor1)
+            actors2.append(m.actor2)
+            actors3.append(m.actor3)
+            directors.append(m.director)
+            overview.append(m.description)
+            genres.append(m.genre)
+        return render_template('movie.html',titles = titles,duration=duration,
+                                releasedates=releasedates,actors1=actors1, 
+                                    actors2=actors2, actors3=actors3,
+                                    directors=directors, overview=overview,genres=genres)
 
 
 @app.route('/theatres', methods=['GET','POST'])
 def theatres():
+    time = "6:50 PM"
     if request.method=='POST':
         Time = request.form['options']
         print(Time)
-        return render_template('book.html')
+        return render_template('book.html', time = time)
         
 
-    return render_template('theatres.html')
+    return render_template('theatres.html', time=time)
 
 
 @app.route('/book', methods=['GET','POST'])
