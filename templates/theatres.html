@@ -16,8 +16,11 @@
     <div class="container-sm">
         <div class="card" style="width: 18rem;">
             <img src="..." class="card-img-top" alt="...">
+            <form action="{{url_for('theatres')}}" method="post">
+              <input type="hidden" name="form" value="form1">
             <div class="card-body">
               <h5 class="card-title">THEATRE 1</h5>
+              <input type="hidden" name="theatrename" value="Theatre 1">
 
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               <form action="{{url_for('theatres')}}" method="post">
@@ -44,6 +47,7 @@
           <br>
 
     </div>
+  </form>
 
     <div class="container-sm">
       <div class="card" style="width: 18rem;">

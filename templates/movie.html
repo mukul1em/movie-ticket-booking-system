@@ -15,11 +15,17 @@
     <div class="container">
 
     <form action="{{url_for('movieselect')}}" method="post">
+      <input type="hidden" name="form" value="form1">
       <div class="input-group flex-nowrap">
         <span class="input-group-text" name='movie' id="addon-wrapping">Movie Name</span>
         <input type="text" name='movie' class="form-control" aria-describedby="addon-wrapping">
       </div>
+      
       <br>
+      <button type='submit' class="btn btn-primary">Search Movie</button>
+    </form>
+    <form action="{{url_for('movieselect')}}" method="post">
+      <input type="hidden" name="form" value="form2">
       <select class="form-select form-select-lg mb-3" name = 'genre' aria-label=".form-select-lg example">
         <option selected>select genre</option>
         <option value="Action">Action</option>
@@ -28,19 +34,27 @@
         <option value="Horror">Horror</option>
         <option value="Romance">Romance</option>
       </select>
-      <button type='submit' class="btn btn-primary">Search</button>
+      <button type='submit' class="btn btn-primary">Search Genre</button>
+      
 
     </form>
+    
     <br>
 
+  
+
     
-    {% for i in range(2)%}
+      {% for i in range(2)%}
+      
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col">
+          <form action="{{url_for('movieselect')}}" method="post"name='myform'>
+            <input type="hidden" name="form" value="form3">
           <div class="card h-100">
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{titles[i]}}</h5>
+              <input type="hidden" value= "{{titles[i]}}" name="select">
               <p class="card-text">{{overview[i]}}</p>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">director: {{directors[i]}}</li>
@@ -48,19 +62,22 @@
                 <li class="list-group-item">genre: {{genres[i]}}</li>
                 <li class="list-group-item">releasedates: {{releasedates[i]}}</li>
                 <li class="list-group-item">duration: {{duration[i]}}</li>
-
               </ul>
             </div>
             <div class="card-footer">
               <small class="text-muted">Last updated 3 mins ago</small>
-              <a href="{{url_for('theatres')}}" class="btn btn-primary">Book</a>
+              <button type="submit"  class="btn btn-primary">Book</a>
             </div>
           </div>
         </div>
+      </form>
         <div class="col">
           <div class="card h-100">
             <img src="..." class="card-img-top" alt="...">
+            <form action="{{url_for('movieselect')}}" method="post"name='myform'>
+              <input type="hidden" name="form" value="form4"> 
             <div class="card-body">
+              <input type="hidden" value= "{{titles[i+1]}}" name="select">
               <h5 class="card-title">{{titles[i+1]}}</h5>
               <p class="card-text">{{overview[i+1]}}</p>
               <ul class="list-group list-group-flush">
@@ -69,19 +86,23 @@
                 <li class="list-group-item">genre: {{genres[i+1]}}</li>
                 <li class="list-group-item">releasedates: {{releasedates[i+1]}}</li>
                 <li class="list-group-item">duration: {{duration[i+1]}}</li>
-
               </ul>
             </div>
             <div class="card-footer">
               <small class="text-muted">Last updated 3 mins ago</small>
-              <a href="#" class="btn btn-primary">Book</a>
+              <button type="submit"  class="btn btn-primary">Book</a>
             </div>
+            
           </div>
         </div>
+      </form>
         <div class="col">
           <div class="card h-100">
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
+              <form action="{{url_for('movieselect')}}" method="post"name='myform'>
+                <input type="hidden" name="form" value="form5">
+              <input type="hidden" value= "{{titles[i+2]}}" name="select">
               <h5 class="card-title">{{titles[i+2]}}</h5>
               <p class="card-text">{{overview[i+2]}}</p>
               <ul class="list-group list-group-flush">
@@ -94,13 +115,19 @@
             </div>
             <div class="card-footer">
               <small class="text-muted">Last updated 3 mins ago</small>
-              <a href="#" class="btn btn-primary">Book</a>
+              <button type="submit"  class="btn btn-primary">Book</a>
             </div>
           </div>
         </div>
       </div>
+    </form>
     {%endfor%}
   </div>
+
+
+    </form>
+    
+ 
     
     
 

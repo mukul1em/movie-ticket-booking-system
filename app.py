@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from matplotlib.pyplot import title
+
 from database import db, app, User, Movie
 from flask import render_template, request
 
@@ -27,7 +26,31 @@ def login():
         password = request.form['password']
         user = User.query.filter_by(username=username, password=password).first()
         if user:
-            return render_template('home.html')
+            titles = []
+            duration = []
+            releasedates = []
+            actors1 = []
+            actors2 = []
+            actors3 = []
+            directors = []
+            overview = []
+            genres = []
+            movie = Movie.query.filter(Movie.month > 5).filter(Movie.month < 9).filter(Movie.year==2022).limit(4)
+            for m in movie:
+                titles.append(m.title)
+                duration.append(m.TimeDuraton)
+                releasedates.append("-".join([str(m.month), str(m.year)]))
+                actors1.append(m.actor1)
+                actors2.append(m.actor2)
+                actors3.append(m.actor3)
+                directors.append(m.director)
+                overview.append(m.description)
+                genres.append(m.genre)
+            return render_template('movie.html',titles = titles,duration=duration,
+                                    releasedates=releasedates,actors1=actors1, 
+                                        actors2=actors2, actors3=actors3,
+                                    directors=directors, overview=overview,genres=genres)
+            
         else:
             return render_template('login.html')
     
@@ -43,6 +66,7 @@ def adminlogin():
 
 
 @app.route('/movieadd', methods=['GET','POST'])
+
 def movieadd():
     if request.method=='POST':
         title = request.form['title']
@@ -66,20 +90,33 @@ def home2():
 
 
 @app.route('/moviebook',methods=['GET','POST'] )
+
 def movieselect():
     if request.method=='POST':
-        if request.form['movie'] :
+        time = "6:50 PM"
+        form_name = request.form['form']
+        if form_name == 'form1':
+            print(request.form['movie'])
             tag = request.form['movie']
-            print(tag)
             search = "%{}%".format(tag)
             movie = Movie.query.filter(Movie.month > 5).filter(Movie.month < 9).filter(Movie.year==2022).filter(Movie.title.like(search)).limit(4)
-        elif request.form['movie'] != '':
-            tag = request.form['movie']
+        elif form_name == 'form2':
+            tag = request.form['genre']
             search = "%{}%".format(tag)
-            print(tag)5
+            print(tag)
             movie = Movie.query.filter(Movie.month > 5).filter(Movie.month < 9).filter(Movie.year==2022).filter(Movie.genre.like(search)).limit(4)
-        else:
-            movie = Movie.query.filter(Movie.month > 5).filter(Movie.month < 9).filter(Movie.year==2022).limit(4)
+        elif form_name == "form3":
+            print(request.form['select'])
+            return render_template('theatres.html', time=time)
+        elif form_name == "form4":
+            print(request.form['select'])
+            return render_template('theatres.html',time=time)
+        elif form_name == "form5":
+            print(request.form['select'])
+            return render_template('theatres.html', time=time)
+        
+
+
         titles = []
         duration = []
         releasedates = []
@@ -99,11 +136,47 @@ def movieselect():
             directors.append(m.director)
             overview.append(m.description)
             genres.append(m.genre)
-        
         return render_template('movie.html',titles = titles,duration=duration,
-                            releasedates=releasedates,actors1=actors1, 
-                                actors2=actors2, actors3=actors3,
-                                directors=directors, overview=overview,genres=genres, r= len(titles))
+                                releasedates=releasedates,actors1=actors1, 
+                                    actors2=actors2, actors3=actors3,
+                                    directors=directors, overview=overview,genres=genres)
+
+        # if request.form['movie'] :
+        #     tag = request.form['movie']
+        #     print(tag)
+        #     search = "%{}%".format(tag)
+        #     movie = Movie.query.filter(Movie.month > 5).filter(Movie.month < 9).filter(Movie.year==2022).filter(Movie.title.like(search)).limit(4)
+        # elif request.form['movie'] != '':
+        #     tag = request.form['movie']
+        #     search = "%{}%".format(tag)
+        #     print(tag)
+        #     movie = Movie.query.filter(Movie.month > 5).filter(Movie.month < 9).filter(Movie.year==2022).filter(Movie.genre.like(search)).limit(4)
+        # else:
+        #     movie = Movie.query.filter(Movie.month > 5).filter(Movie.month < 9).filter(Movie.year==2022).limit(4)
+        # titles = []
+        # duration = []
+        # releasedates = []
+        # actors1 = []
+        # actors2 = []
+        # actors3 = []
+        # directors = []
+        # overview = []
+        # genres = []
+        # for m in movie:
+        #     titles.append(m.title)
+        #     duration.append(m.TimeDuraton)
+        #     releasedates.append("-".join([str(m.month), str(m.year)]))
+        #     actors1.append(m.actor1)
+        #     actors2.append(m.actor2)
+        #     actors3.append(m.actor3)
+        #     directors.append(m.director)
+        #     overview.append(m.description)
+        #     genres.append(m.genre)
+        
+        # return render_template('movie.html',titles = titles,duration=duration,
+        #                     releasedates=releasedates,actors1=actors1, 
+        #                         actors2=actors2, actors3=actors3,
+        #                         directors=directors, overview=overview,genres=genres, r= len(titles))
   
     if request.method=="GET":
         movie = Movie.query.filter(Movie.month > 5).filter(Movie.month < 9).filter(Movie.year==2022).limit(4)
@@ -136,8 +209,9 @@ def movieselect():
 def theatres():
     time = "6:50 PM"
     if request.method=='POST':
+        theatre = request.form['theatrename']
         Time = request.form['options']
-        print(Time)
+        print(Time, theatre)
         return render_template('book.html', time = time)
         
 
