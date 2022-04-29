@@ -29,6 +29,18 @@ class User(db.Model):
     password = db.Column(db.String(128))
     reservations = db.relationship('Reservation', backref = 'user', lazy = True)
 
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):   
+        return True           
+
+    def is_anonymous(self):
+        return False          
+
+    def get_id(self):         
+        return str(self.id)
+
 tags_seat_reservation= db.Table('tags_seat_reservation', 
                             db.Column('seat_id', db.Integer, db.ForeignKey('seat.id'), primary_key = True),
                             db.Column('reservation_id', db.Integer, db.ForeignKey('Reservation.id'), primary_key = True))

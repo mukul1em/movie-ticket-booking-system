@@ -12,7 +12,31 @@
   </head>
   <body>
     <h1>Home</h1>
-    
+    <h3>Welcome {{username}}</h3>
+    <div class="row">
+      <form action="{{url_for('login')}}" method="post">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Book  Movie</h5>
+              <p class="card-text">book latest movies in your nearest theatre.</p>
+              <a href="{{url_for('movieselect')}}" class="btn btn-primary">book</a>
+            </div>
+          </div>
+        </div>
+
+      </form>
+      
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Search Movies</h5>
+            <p class="card-text">search and give reviews</p>
+            <a href="#" class="btn btn-primary">search</a>
+          </div>
+        </div>
+      </div>
+    </div>
     
 
     <!-- Optional JavaScript; choose one of the two! -->
